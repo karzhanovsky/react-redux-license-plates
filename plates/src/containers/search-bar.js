@@ -35,8 +35,15 @@ class SearchBar extends Component {
         type='submit'
         className='btn btn-primary'>Search</button>
       </form>
+      <p>{this.props.search}</p>
       </div>
     );
+  };
+}
+
+function mapStateToProps(state) {
+  return {
+    search: state.search
   };
 }
 
@@ -44,4 +51,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({searchAction}, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(SearchBar);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
