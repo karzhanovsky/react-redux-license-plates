@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -23,6 +24,14 @@ class SearchBar extends Component {
     this.setState({term: ''});
   }
 
+  renderSearchResult() {
+    return _.map(this.props.search, search => {
+      return (
+        <li key={search}>{search}</li>
+      )
+    })
+  }
+
   render() {
     return (
       <div>
@@ -35,7 +44,7 @@ class SearchBar extends Component {
         type='submit'
         className='btn btn-primary'>Search</button>
       </form>
-      <p>{this.props.search}</p>
+      <ul>{this.renderSearchResult()}</ul>
       </div>
     );
   };
