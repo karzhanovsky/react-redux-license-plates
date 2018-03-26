@@ -12,6 +12,18 @@ var config = {
 
 export function searchAction(term) {
   return dispatch => {
+    firebase.database().ref(`/plates/${term}/comments`).orderByKey().on('value', snapshot => {
+      dispatch({
+        type: 'SEARCH',
+        payload: snapshot.val()
+      });
+    });
+  };
+};
+
+/*
+export function searchAction(term) {
+  return dispatch => {
     firebase.database().ref('/').orderByKey().startAt(term).endAt(`${term}\uf8ff`).on('value', snapshot => {
       dispatch({
         type: 'SEARCH',
@@ -19,30 +31,5 @@ export function searchAction(term) {
       });
     });
   };
-}
-
-/*ref.orderByKey().startAt("b").endAt("b\uf8ff").on("child_added", function(snapshot) {
-  console.log(snapshot.key());
-});*/
-
-/*
-return dispatch => {
-    firebase.database().ref('/').on('value', snapshot => {
-      dispatch ({
-        type: FETCH_PLATES,
-        payload: snapshot.val()
-      });
-    });
-  };
-  */
-
-  /*
-  return dispatch => {
-    firebase.database().ref('/').orderByKey().startAt(term).endAt(`${term}\uf8ff`).on('child_added', snapshot => {
-      dispatch({
-        type: 'SEARCH',
-        payload: snapshot.val()
-      });
-    });
-  };
-  */
+};
+*/
