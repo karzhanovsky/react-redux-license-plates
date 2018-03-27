@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import App from './components/App';
+import Profile from './components/profile';
 import registerServiceWorker from './registerServiceWorker';
 import reducers from './reducers';
 
@@ -15,8 +16,8 @@ ReactDOM.render(
   <BrowserRouter>
     <div>
       <Switch>
-        <Route path='/' component={App}>
-        </Route>
+        <Route path='/plate/:id' component={Profile} />
+        <Route path='/' component={App} />
       </Switch>
     </div>
   </BrowserRouter>

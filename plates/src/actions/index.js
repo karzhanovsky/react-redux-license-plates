@@ -11,8 +11,9 @@ var config = {
   firebase.initializeApp(config);
 
 export function searchAction(term) {
+  const upperCaseTerm = term.toUpperCase()
   return dispatch => {
-    firebase.database().ref(`/plates/${term}/comments`).orderByKey().on('value', snapshot => {
+    firebase.database().ref(`/plates/${upperCaseTerm}/comments`).on('value', snapshot => {
       dispatch({
         type: 'SEARCH',
         payload: snapshot.val()

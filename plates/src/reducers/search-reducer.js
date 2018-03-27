@@ -6,5 +6,4 @@ export default function(state={}, action) {
       return _.mapKeys(action.payload);
     default: return state;
   }
-  return state;
 }
