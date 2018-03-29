@@ -29,15 +29,10 @@ export function searchAction(term) {
   };
 };
 
-/*
-export function searchAction(term) {
-  return dispatch => {
-    firebase.database().ref('/').orderByKey().startAt(term).endAt(`${term}\uf8ff`).on('value', snapshot => {
-      dispatch({
-        type: 'SEARCH',
-        payload: snapshot.val()
-      });
-    });
+export function addCommentAction(plate, comment) {
+  const upperCasePlate = plate.toUpperCase();
+    firebase.database().ref(`/plates/${upperCasePlate}/comments`).push(comment);
+  return {
+    type: 'ADD_COMMENT'
   };
-};
-*/
+}

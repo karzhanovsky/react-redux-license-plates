@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addCommentAction } from '../actions';
 
 class AddComment extends Component {
   constructor(props) {
@@ -15,6 +17,7 @@ class AddComment extends Component {
   onFormSubmit(event) {
     event.preventDefault();
     this.setState({term: ''});
+    this.props.addCommentAction(this.props.plate, this.state.term);
   }
 
   render() {
@@ -29,4 +32,4 @@ class AddComment extends Component {
   }
 }
 
-export default AddComment;
+export default connect(null, {addCommentAction})(AddComment);

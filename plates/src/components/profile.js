@@ -33,7 +33,7 @@ class Profile extends Component {
           <ul className="comments">
             {this.renderProfile()}
           </ul>
-          <AddComment />
+          <AddComment plate={this.props.match.params.id.toUpperCase()}/>
         </div>
       )
     }
