@@ -34,7 +34,7 @@ class SearchBar extends Component {
         <input
         className='form-control'
         value={this.state.term}
-        placeholder="Provide license plates"
+        placeholder="Search for a licence plate"
         onChange={this.onInputChange} />
         <button
         type='submit'

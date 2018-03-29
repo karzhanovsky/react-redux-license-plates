@@ -9,3 +9,18 @@ body {
   margin: 5px;
   display: inline-block;
 }
+.btn-primary {
+  margin: 5px;
+}
+
+.single-comment {
+  width: 400px;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+
+.comments {
+  background: #eee;
+  padding: 10px;
+  list-style: none;
+}

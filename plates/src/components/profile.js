@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { searchAction } from '../actions';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import _ from 'lodash';
+import AddComment from './add-comment';
 
 class Profile extends Component {
 
@@ -13,7 +15,7 @@ class Profile extends Component {
     if (typeof this.props.profile === 'object') {
       return _.map(this.props.profile, comment => {
         return (
-          <li key={comment}>{comment}</li>
+          <li key={comment} className="single-comment">{comment}</li>
         );
       });
     } else {
@@ -25,10 +27,13 @@ class Profile extends Component {
     if (!_.isEmpty(this.props.profile)) {
       return (
         <div>
+          <Link to='/'>Back</Link>
           <h1>{this.props.match.params.id.toUpperCase()}</h1>
-          <ul>
+          <h4>Comments:</h4>
+          <ul className="comments">
             {this.renderProfile()}
           </ul>
+          <AddComment />
         </div>
       )
     }
