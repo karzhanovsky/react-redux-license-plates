@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import AddComment from './add-comment';
+import Rating from './rating';
 
 class Profile extends Component {
 
@@ -29,6 +30,7 @@ class Profile extends Component {
         <div>
           <Link to='/'>Back</Link>
           <h1>{this.props.match.params.id.toUpperCase()}</h1>
+          Rating:<Rating plate={this.props.match.params.id.toUpperCase()}/>
           <h4>Comments:</h4>
           <ul className="comments">
             {this.renderProfile()}

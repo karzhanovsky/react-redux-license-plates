@@ -29,6 +29,25 @@ export function searchAction(term) {
   };
 };
 
+export function fetchRating(plate) {
+  const upperCaseRating = plate.toUpperCase();
+  return dispatch => {
+    firebase.database().ref(`/plates/${upperCaseRating}/rating`).once('value', snapshot => {
+      if (!snapshot.exists()) {
+        dispatch({
+          type: 'NO_RATING',
+          payload: "No rating yet."
+        });
+      } else {
+      dispatch({
+        type: 'RATING',
+        payload: snapshot.val()
+      });
+    }
+    });
+  };
+}
+
 export function addCommentAction(plate, comment) {
   const upperCasePlate = plate.toUpperCase();
     firebase.database().ref(`/plates/${upperCasePlate}/comments`).push(comment);
