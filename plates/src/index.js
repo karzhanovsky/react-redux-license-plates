@@ -8,6 +8,7 @@ import App from './components/App';
 import Profile from './components/profile';
 import registerServiceWorker from './registerServiceWorker';
 import reducers from './reducers';
+import './index.css'
 
 const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore);
 

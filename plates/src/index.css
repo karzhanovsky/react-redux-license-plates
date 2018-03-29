@@ -2,4 +2,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #fff;
+}
+.form-control {
+  width: 350px !important;
+  margin: 5px;
+  display: inline-block;
 }

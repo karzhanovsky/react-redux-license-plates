@@ -10,19 +10,26 @@ class Profile extends Component {
   }
 
   renderProfile () {
-    return _.map(this.props.profile, comment => {
-      return (
-        <li key={comment}>{comment}</li>
-      );
-    });
+    if (typeof this.props.profile === 'object') {
+      return _.map(this.props.profile, comment => {
+        return (
+          <li key={comment}>{comment}</li>
+        );
+      });
+    } else {
+      return <li><p>{this.props.profile}</p></li>
+    }
   }
 
   render() {
     if (!_.isEmpty(this.props.profile)) {
       return (
-        <ul>
-          {this.renderProfile()}
-        </ul>
+        <div>
+          <h1>{this.props.match.params.id.toUpperCase()}</h1>
+          <ul>
+            {this.renderProfile()}
+          </ul>
+        </div>
       )
     }
     return (

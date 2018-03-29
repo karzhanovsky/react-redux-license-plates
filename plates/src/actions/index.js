@@ -14,10 +14,17 @@ export function searchAction(term) {
   const upperCaseTerm = term.toUpperCase()
   return dispatch => {
     firebase.database().ref(`/plates/${upperCaseTerm}/comments`).on('value', snapshot => {
+      if (!snapshot.exists()) {
+        dispatch({
+          type: 'NO_PLATES',
+          payload: "No comments for the plates you've provided. Be the first to comment!"
+        });
+      } else {
       dispatch({
         type: 'SEARCH',
         payload: snapshot.val()
       });
+    }
     });
   };
 };
