@@ -24,3 +24,8 @@ body {
   padding: 10px;
   list-style: none;
 }
+
+.search-bar {
+  width: 500px;
+  margin: 0 auto;
+}
